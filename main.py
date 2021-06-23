@@ -1,7 +1,5 @@
 import itk
 import vtk
-import numpy as np
-import matplotlib.pyplot as plt
 
 def render(main_file, segmented_file):
     """
