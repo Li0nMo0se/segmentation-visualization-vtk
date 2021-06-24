@@ -15,7 +15,7 @@ def render(main_file, segmented_file):
 
     # Opacity -> map intensity to an opacity
     opacity_transfer_function_main = vtk.vtkPiecewiseFunction()
-    opacity_transfer_function_main.AddPoint(20, 0.0)
+    opacity_transfer_function_main.AddPoint(70, 0.0)
     opacity_transfer_function_main.AddPoint(255, 0.3)
 
     volume_property_main = vtk.vtkVolumeProperty()
@@ -35,6 +35,8 @@ def render(main_file, segmented_file):
 
     # Opacity -> map intensity to an opacity
     opacity_transfer_function = vtk.vtkPiecewiseFunction()
+    opacity_transfer_function.AddPoint(250, 0)
+    opacity_transfer_function.AddPoint(255, 0.2)
 
     color_transfer_function = vtk.vtkColorTransferFunction()
     color_transfer_function.AddRGBPoint(250, 0.0, 0.0, 0.0)
@@ -95,7 +97,7 @@ def segment(filename):
     return rescale_filter
 
 if __name__ == "__main__":
-    print(itk.Version.GetITKVersion())
+    print(f"VTK version: {itk.Version.GetITKVersion()}")
 
     input_filename = "abdomen.mha"
     segmented_filename = "segmented.mha"
